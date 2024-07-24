@@ -48,17 +48,17 @@ export default function UsersRolesPage() {
 
   const FetchData = useCallback(async () => {
     try {
-          const response = await getUrl()
-          const result = []
-          response.data.map((item) => {
-            const values = {
-              ...item,
-              className: UserRoles(item.role)
-            }
-            return result.push(values)
-          })
-          setReserved(result)
-          setData({ data: result, isLoading: false })
+      const response = await getUrl()
+      const result = []
+      response.data.map((item) => {
+        const values = {
+          ...item,
+          className: UserRoles(item.role)
+        }
+        return result.push(values)
+      })
+      setReserved(result)
+      setData({ data: result, isLoading: false })
     } catch (error) {
       setData({ ...data, isLoading: false })
       console.log(error)
@@ -66,7 +66,7 @@ export default function UsersRolesPage() {
     // eslint-disable-next-line
   }, [])
 
-  useEffect(() => {FetchData()}, [FetchData])
+  useEffect(() => { FetchData() }, [FetchData])
 
   const EditData = item => {
     setViews({ status: true, data: item })
@@ -76,13 +76,14 @@ export default function UsersRolesPage() {
     setDels({ status: true, data: item })
   }
 
-  const FilteredData = (data) => {
-    setData({ ...data, data: data })
+  const FilteredData = (value) => {
+    // return console.log(value)
+    setData({ ...data, data: value })
   }
 
 
-  const CustomBody = ({children}) => {
-    return (<>
+  return (
+    <>
       <div className="text-[1.5rem] font-semibold mt-[1.5rem]">Users & Roles</div>
       <div className="text-grayed font-light">Manage all users in your business</div>
       <div className="">
@@ -98,10 +99,10 @@ export default function UsersRolesPage() {
       <div className="mt-4">
         <div className="h-[4.25rem] bg-white p-4 grid items-center grid-cols-5 rounded-tr-md rounded-tl-md">
           <div className="flex items-center gap-2 col-span-3 lg:col-span-2">
-            <SearchUsers 
-            data={data.data}
-            reserved={reserved}
-            FilteredData={FilteredData}
+            <SearchUsers
+              data={data.data}
+              reserved={reserved}
+              FilteredData={FilteredData}
             />
             <div className="border h-[2.5rem] px-4 font-medium rounded-lg flex items-center gap-2">
               <VscListFilter />
@@ -119,28 +120,14 @@ export default function UsersRolesPage() {
             </div>
           </div>
         </div>
-        {children}
+        {data.isLoading && <div className="">Loading Data...</div>}
+        {!data.isLoading && <CustomTable
+          tableHeaders={TableHeader}
+          tableData={data.data || []}
+          EditData={EditData}
+          DeleteData={DeleteData}
+        />}
       </div>
-    </>
-    )
-  }
-
-  if (data.isLoading) return (
-    <CustomBody>Loading...</CustomBody>
-  )
-if(!data) return (
-  <CustomBody>Something went wrong</CustomBody>
-)
-  return (
-    <>
-    <CustomBody>
-      <CustomTable
-        tableHeaders={TableHeader}
-        tableData={data.data || []}
-        EditData={EditData}
-        DeleteData={DeleteData}
-      />
-      </CustomBody>
 
       {views.status && <UserModal
         singleData={views.data}

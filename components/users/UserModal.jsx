@@ -48,7 +48,7 @@ export default function UserModal({ onclose, singleData, refetch }) {
             const response = !singleData?.id ? await postUrl(data) : await updateUrl(`${singleData.id}`, data)
             if (response.status === 200) {
                 toast({
-                    title: `${data.fullname} added successfully`,
+                    title: `${data.fullname} ${singleData?.id ? 'updated' : 'added'} successfully`,
                     action: (
                         <ToastAction altText="Goto schedule to undo">Close</ToastAction>
                     ),
