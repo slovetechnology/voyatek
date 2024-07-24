@@ -6,7 +6,7 @@ export default function SearchUsers({ data, FilteredData, reserved }) {
     const handleInputChange = e => {
         const value = e.target.value
         if (value.length > 0) {
-            const result = data.filter(ele => ele.fullname.toLowerCase().includes(value.toLowerCase()) || ele.email.toLowerCase().includes(value.toLowerCase()) || ele.password.toLowerCase().includes(value.toLowerCase()))
+            const result = data.filter(ele => ele.fullname.toLowerCase().includes(value.toLowerCase()) || ele.email.toLowerCase().includes(value.toLowerCase()) || ele.password.toLowerCase().includes(value.toLowerCase()) || ele.role.toLowerCase().includes(value.toLowerCase()))
 
 
             if (result.length > 0) {
