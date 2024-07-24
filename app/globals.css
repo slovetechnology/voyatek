@@ -81,3 +81,18 @@
 @keyframes l13{ 
   100%{transform: rotate(1turn)}
 }
+.fades {
+  animation: fades 100ms;
+}
+@keyframes fades {
+  from {opacity: .1;}
+  to {opacity: 1;}
+}
+.fades2 {
+  animation: fades2 200ms;
+  transition: animate 200ms ease-in-out;
+}
+@keyframes fades2 {
+  from {opacity: .4; transform: scale(0.9);}
+  to {opacity: 1; transform: scale(1);}
+}
