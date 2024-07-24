@@ -63,7 +63,8 @@ export default function UsersRolesPage() {
       setData({ ...data, isLoading: false })
       console.log(error)
     }
-  }, [data])
+    // eslint-disable-next-line
+  }, [])
 
   useEffect(() => {FetchData()}, [FetchData])
 

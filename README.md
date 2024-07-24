@@ -21,6 +21,7 @@ All you need is
 npm install
 # or
 yarn add
+# the above CLI commands will install all the required packages into the project
 
 npm run dev
 # or
@@ -32,6 +33,12 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+# Creat a .env file
+# add the variable NEXT_PUBLIC_API=api-url
+# NEXT_PUBLIC makes the environment variable accessible to both the server and the client
+# visit https://beeceptor.com/crud-api/ - to generate a new API URL
+
 
 You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 

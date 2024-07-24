@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const BaseURL = `https://ca4c1b664088a26ef1f7.free.beeceptor.com/api/users/`
+const BaseURL = process.env.NEXT_PUBLIC_API
 
 
 export const getUrl = async (query) => {
