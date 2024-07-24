@@ -14,7 +14,7 @@ export default function Sidebar() {
                     {SideLinks.map((item, index) => (
                         <Link
                             onClick={() => setActive(index)}
-                            href={`${item.url}`} key={index} className={`flex items-center transition-all px-4 py-3 h-[2.75rem] w-[13rem] gap-3 capitalize rounded-md ${ActiveSidenav(index === active ? true : false)}`}>
+                            href={`${item?.url}`} key={index} className={`flex items-center transition-all px-4 py-3 h-[2.75rem] w-[13rem] gap-3 capitalize rounded-md ${ActiveSidenav(index === active ? true : false)}`}>
                             <item.icon className='text-[1.1rem]' />
                             <div className="text-sm">{item.title}</div>
                         </Link>

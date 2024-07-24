@@ -63,7 +63,7 @@ export default function UsersRolesPage() {
       setData({ ...data, isLoading: false })
       console.log(error)
     }
-  }, [])
+  }, [data])
 
   useEffect(() => {FetchData()}, [FetchData])
 

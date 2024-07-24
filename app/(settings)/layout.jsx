@@ -1,16 +1,17 @@
 "use client"
 import Header from '@/components/Header'
-import PageLink from '@/components/PageLink'
 import Sidebar from '@/components/Sidebar'
 import { SideLinks } from '@/utils/Constants'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 import { Toaster } from "@/components/ui/toaster"
+import dynamic from 'next/dynamic'
+const PageLink = dynamic(() => import('@/components/PageLink'), {ssr: false})
 
 
 export default function SettingsLayout({children}) {
     const pathname = usePathname()
-    const currentPath = SideLinks.find(ele => ele.url === pathname)
+    const currentPath = SideLinks.find(ele => ele?.url === pathname)
     return (
         <div className='overflow-hidden'>
             <Header />
@@ -20,8 +21,8 @@ export default function SettingsLayout({children}) {
                 </div>
                 <div className="h-[84.5dvh] w-full px-4 lg:px-[3.5rem] pt-10 lg:pt-0 overflow-y-auto overflow-x-hidden pb-20">
                     <PageLink
-                        link={currentPath.url}
-                        title={currentPath.title}
+                        link={currentPath?.url}
+                        title={currentPath?.title}
                     />
                     {children}
                 </div>
