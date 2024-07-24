@@ -2,7 +2,6 @@ import axios from "axios"
 
 const BaseURL = process.env.NEXT_PUBLIC_API
 
-
 export const getUrl = async (query) => {
     const response = await axios.get(`${BaseURL}${query ? `${query}` : ''}`)
     return response
